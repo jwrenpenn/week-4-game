@@ -1,0 +1,20 @@
+
+body {
+    background-image: url("../images/bckgrnd.jpg");
+    height: 100%;
+    overflow: scroll;
+        
+}
+
+
+.page-wrapper {
+    max-width: 800px;
+    margin: 100px;
+
+}
+
+.jumbotron {
+    width: 100%;
+    background-color: darkgray;
+    align-content: center;
+}
