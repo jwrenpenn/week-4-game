@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Crystal Collector</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  </head>
+  <body>
+
+        <div class="page-wrapper">
+            <div class="row">
+                <div class="jumbotron">
+                        <h1 class="display-4">Collect Some Crystals</h1>
+                        <p class="lead">This is a simple game. Click the crystals to reach your goal.</p>
+                        <hr class="my-4">
+                        
+                        <p class="lead">
+                            <a id="cry1" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 1:</a>
+                        </p>
+                        <p class="lead">
+                            <a id="cry2" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 2:</a>
+                        </p>
+                        <p  class="lead">
+                            <a id="cry3" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 3:</a>
+                        </p>
+                        <p class="lead">
+                            <a id="cry4" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 4:</a>
+                        </p>
+
+                        <h2 id="goal">Your Goal: </h2>
+                        <h2 id="currentScore">Your Current Score: </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="container">
+                    <h1>Wins</h1>
+                    <hr >
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-5">
+                    <div class="container">
+                    <h1>Losses</h1>
+                    <hr >
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script>
+
+            $(document).ready(function() {
+
+                var wins = 0;
+                var losses = 0;
+
+                function initializeGame() {
+                    crystalOne = "";
+                    crystalTwo = "";
+                    crystalThree = "";
+                    crystalFour = "";
+                    computerGoal = "";
+                    currentScore = "";
+
+                $("#computerGoal, #crystalOne, #crystalTwo, #crystalThree, #crystalFour, #currentScore").empty();
+                }
+
+                var computerGoal = Math.floor(Math.random() * 120)+ 1;
+                console.log(computerGoal);
+                $("#goal").html("Your goal is: " + computerGoal);
+
+                var crystalOne = Math.floor(Math.random() * 12)+ 19;
+                console.log(crystalOne);
+                var crystalTwo = Math.floor(Math.random() * 12)+ 19;
+                console.log(crystalTwo);
+                var crystalThree = Math.floor(Math.random() * 12)+ 19;
+                console.log(crystalThree);
+                var crystalFour = Math.floor(Math.random() * 12)+ 19;
+                console.log(crystalFour);
+                var currentScore = 0;
+
+                $("#cry1").on("click", function() {
+                    add crystalOne to currentScore
+                });
+
+                 $("#cry2").on("click", function() {
+                    add crystalTwo to currentScore
+                });
+
+                 $("#cry3").on("click", function() {
+                    add crystalThree to currentScore
+                });
+
+                 $("#cry4").on("click", function() {
+                    add crystalFour to currentScore
+                });
+
+                if (currentScore > computerGoal) {
+                    alert("You bust! Play again?")
+                    losses++;
+                    initializeGame;
+                }
+                
+                else if (currentScore === computerGoal) {
+                    alert("You win!");
+                    wins++;
+                    initializeGame;
+                }
+
+                //else {
+                    //put pick another in a div somewhere;
+                //}
+
+            });
+
+
+
+            //first: i will need the computer to assign random values to the goal and each of the four crystals( look at lotto example).
+            //the value for the goal will be written to the page, the others will be attached to the buttons but hidden.
+            //i need to set up an event handler for the crystals
+            //i will need t create functions to add the user input, i will need to display the return of that value in your; current score.
+            //the game will return until current score is either = or greater than goal. equal to means 1++ added to the wins, > means a !++ added to the losses tally
+            //and a prompt play again.
+            //i will need a clear function at the very beginning.
+   
+   
+   </script>
+  </body>
+</html>
