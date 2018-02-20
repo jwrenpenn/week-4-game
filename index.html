@@ -12,49 +12,51 @@
   </head>
   <body>
 
-        <div class="page-wrapper">
+    <div class="page-wrapper">
             <div class="row">
                 <div class="jumbotron">
                         <h1 class="display-4">Collect Some Crystals</h1>
                         <p class="lead">This is a simple game. Click the crystals to reach your goal.</p>
                         <hr class="my-4">
-                        
-                        <p class="lead">
-                            <a id="cry1" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 1:</a>
-                        </p>
-                        <p class="lead">
-                            <a id="cry2" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 2:</a>
-                        </p>
-                        <p  class="lead">
-                            <a id="cry3" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 3:</a>
-                        </p>
-                        <p class="lead">
-                            <a id="cry4" class="btn btn-primary btn-md" href="#" role="button">Collect crystal 4:</a>
-                        </p>
 
-                        <h2 id="goal">Your Goal: </h2>
-                        <h2 id="currentScore">Your Current Score: </h2>
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="container">
-                    <h1>Wins</h1>
-                    <hr >
-                    </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <a id="cry1"><img src="assets/images/opal.jpg" alt="Opal"></a>
+                            </div>
+
+                            <div class="col-sm-3">
+                            <a id="cry2"><img src="assets/images/garnet.png" alt="Garnet"></a>
+                            </div>
+
+                            <div class="col-sm-3">
+                            <a id="cry3"><img src="assets/images/topaz.png" alt="Topaz"></a>
+                            </div>
+
+                            <div class="col-sm-3">
+                            <a id="cry4"><img src="assets/images/zircon.png" alt="Zircon"></a>
+                            </div>
+                        </div>
+                        <div class="row">    
+                            <div class="col-sm-6">    
+                            <h2 id="goal">Your Goal: </h2>
+                            </div>
+
+                            <div class="col-sm-6"> 
+                            <h2 id="currentScore">Your Score: </h2>
+                            </div>
+                        </div>        
+                        <div class="row">
+                            <div class="col-md-5">
+                            <div id="wins"></div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-5">
+                            <div id="losses"></div>
+                            </div>
+                        </div>
                 </div>
-                <div class="col-md-2">
-
-                </div>
-                <div class="col-md-5">
-                    <div class="container">
-                    <h1>Losses</h1>
-                    <hr >
-                    </div>
-                </div>
-            </div>
-
-
-
         </div>
 
         <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -76,64 +78,79 @@
                 $("#computerGoal, #crystalOne, #crystalTwo, #crystalThree, #crystalFour, #currentScore").empty();
                 }
 
-                var computerGoal = Math.floor(Math.random() * 120)+ 1;
+
+                function game() {
+                    if (currentScore > computerGoal) {
+                        losses++;
+                        console.log(losses);
+                        $("#losses").html("Losses: " + losses);
+                        alert("You bust! Play again?") 
+                        initializeGame(); 
+                    }
+             
+                    else if (currentScore === computerGoal) {
+                        wins++;
+                        console.log(wins);
+                        $("#wins").html("Wins: " + wins);
+                        alert("You win!");
+                        initializeGame();  
+                    }
+                    
+                } 
+                
+
+                var computerGoal = Math.floor(Math.random() * 120)+ 19;
                 console.log(computerGoal);
                 $("#goal").html("Your goal is: " + computerGoal);
 
-                var crystalOne = Math.floor(Math.random() * 12)+ 19;
+                var crystalOne = Math.floor(Math.random() * 12)+ 1;
                 console.log(crystalOne);
-                var crystalTwo = Math.floor(Math.random() * 12)+ 19;
+                var crystalTwo = Math.floor(Math.random() * 12)+ 1;
                 console.log(crystalTwo);
-                var crystalThree = Math.floor(Math.random() * 12)+ 19;
+                var crystalThree = Math.floor(Math.random() * 12)+ 1;
                 console.log(crystalThree);
-                var crystalFour = Math.floor(Math.random() * 12)+ 19;
+                var crystalFour = Math.floor(Math.random() * 12)+ 1;
                 console.log(crystalFour);
                 var currentScore = 0;
 
+                 
+               
+
                 $("#cry1").on("click", function() {
-                    add crystalOne to currentScore
+                    currentScore += crystalOne;
+                    console.log(currentScore);
+                    console.log(crystalOne);
+                    $("#currentScore").html("Your score : " + currentScore);
+                    game();
                 });
 
                  $("#cry2").on("click", function() {
-                    add crystalTwo to currentScore
+                    currentScore += crystalTwo;
+                    console.log(currentScore);
+                    console.log(crystalTwo);
+                    $("#currentScore").html("Your score : " + currentScore);
+                    game();
                 });
 
                  $("#cry3").on("click", function() {
-                    add crystalThree to currentScore
+                    currentScore += crystalThree;
+                    console.log(currentScore);
+                    console.log(crystalThree);
+                    $("#currentScore").html("Your score : " + currentScore);
+                    game();
                 });
 
                  $("#cry4").on("click", function() {
-                    add crystalFour to currentScore
+                    currentScore += crystalFour;
+                    console.log(currentScore);
+                    console.log(crystalFour);
+                    $("#currentScore").html("Your score : " + currentScore);
+                    game();
                 });
 
-                if (currentScore > computerGoal) {
-                    alert("You bust! Play again?")
-                    losses++;
-                    initializeGame;
-                }
                 
-                else if (currentScore === computerGoal) {
-                    alert("You win!");
-                    wins++;
-                    initializeGame;
-                }
-
-                //else {
-                    //put pick another in a div somewhere;
-                //}
 
             });
-
-
-
-            //first: i will need the computer to assign random values to the goal and each of the four crystals( look at lotto example).
-            //the value for the goal will be written to the page, the others will be attached to the buttons but hidden.
-            //i need to set up an event handler for the crystals
-            //i will need t create functions to add the user input, i will need to display the return of that value in your; current score.
-            //the game will return until current score is either = or greater than goal. equal to means 1++ added to the wins, > means a !++ added to the losses tally
-            //and a prompt play again.
-            //i will need a clear function at the very beginning.
-   
    
    </script>
   </body>
