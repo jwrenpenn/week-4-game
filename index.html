@@ -47,13 +47,17 @@
                         </div>        
                         <div class="row">
                             <div class="col-md-5">
-                            <div id="wins"></div>
+                            <div></div>
+                            <hr >
+                            <div id="wins">Wins: </div>
                             </div>
                             <div class="col-md-2">
 
                             </div>
                             <div class="col-md-5">
-                            <div id="losses"></div>
+                            <div></div>
+                            <hr >
+                            <div id="losses">Losses: </div>
                             </div>
                         </div>
                 </div>
@@ -66,89 +70,87 @@
 
                 var wins = 0;
                 var losses = 0;
+                var computerGoal;
+                var crystalOne;
+                var crystalTwo;
+                var crystalThree;
+                var crystalFour;
+                var currentScore;
 
                 function initializeGame() {
-                    crystalOne = "";
-                    crystalTwo = "";
-                    crystalThree = "";
-                    crystalFour = "";
-                    computerGoal = "";
-                    currentScore = "";
-
-                $("#computerGoal, #crystalOne, #crystalTwo, #crystalThree, #crystalFour, #currentScore").empty();
+                    computerGoal = Math.floor(Math.random() * 120)+ 19;
+                    console.log(computerGoal);
+                    $("#goal").html("Your goal is: " + computerGoal);
+                    crystalOne = Math.floor(Math.random() * 12)+ 1;
+                    console.log(crystalOne, "c1");
+                    crystalTwo = Math.floor(Math.random() * 12)+ 1;
+                    console.log(crystalTwo, "c2");
+                    crystalThree = Math.floor(Math.random() * 12)+ 1;
+                    console.log(crystalThree, "c3");
+                    crystalFour = Math.floor(Math.random() * 12)+ 1;
+                    console.log(crystalFour, 'c4');
+                    console.log("working?")
+                    console.log("computerGoal", computerGoal);
+                    currentScore = 0;
+                    $("#currentScore").html("Your Score is: " + currentScore);
+               
                 }
-
+                
+                initializeGame();
 
                 function game() {
+
                     if (currentScore > computerGoal) {
-                        losses++;
-                        console.log(losses);
-                        $("#losses").html("Losses: " + losses);
-                        alert("You bust! Play again?") 
-                        initializeGame(); 
+                    losses++;
+                    console.log(losses, "losses");
+                    $("#losses").html("Losses: " + losses);
+                    initializeGame(); 
+                    alert("You bust! Play again?") 
+
                     }
-             
+
                     else if (currentScore === computerGoal) {
-                        wins++;
-                        console.log(wins);
-                        $("#wins").html("Wins: " + wins);
-                        alert("You win!");
-                        initializeGame();  
+                    wins++;
+                    console.log(wins, "wins");
+                    $("#wins").html("Wins: " + wins);
+                    alert("You win!");
+                    initializeGame();  
                     }
-                    
-                } 
-                
 
-                var computerGoal = Math.floor(Math.random() * 120)+ 19;
-                console.log(computerGoal);
-                $("#goal").html("Your goal is: " + computerGoal);
-
-                var crystalOne = Math.floor(Math.random() * 12)+ 1;
-                console.log(crystalOne);
-                var crystalTwo = Math.floor(Math.random() * 12)+ 1;
-                console.log(crystalTwo);
-                var crystalThree = Math.floor(Math.random() * 12)+ 1;
-                console.log(crystalThree);
-                var crystalFour = Math.floor(Math.random() * 12)+ 1;
-                console.log(crystalFour);
-                var currentScore = 0;
-
-                 
-               
+                }
 
                 $("#cry1").on("click", function() {
                     currentScore += crystalOne;
-                    console.log(currentScore);
-                    console.log(crystalOne);
+                    console.log(currentScore, "currentScore");
+                    console.log(crystalOne, "crystalOne");
                     $("#currentScore").html("Your score : " + currentScore);
                     game();
                 });
 
                  $("#cry2").on("click", function() {
                     currentScore += crystalTwo;
-                    console.log(currentScore);
-                    console.log(crystalTwo);
+                    console.log(currentScore, "currentScore");
+                    console.log(crystalTwo, "crystalTwo");
                     $("#currentScore").html("Your score : " + currentScore);
                     game();
                 });
 
                  $("#cry3").on("click", function() {
                     currentScore += crystalThree;
-                    console.log(currentScore);
-                    console.log(crystalThree);
+                    console.log(currentScore, "currentScore");
+                    console.log(crystalThree, "crystalThree");
                     $("#currentScore").html("Your score : " + currentScore);
                     game();
                 });
 
                  $("#cry4").on("click", function() {
                     currentScore += crystalFour;
-                    console.log(currentScore);
-                    console.log(crystalFour);
+                    console.log(currentScore, "currentScore");
+                    console.log(crystalFour, "crystalFour");
                     $("#currentScore").html("Your score : " + currentScore);
                     game();
                 });
 
-                
 
             });
    
